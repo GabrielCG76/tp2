@@ -1,0 +1,36 @@
+#Gabriel Claude-Giroux 405
+#Projet tp2
+
+import random
+
+def jeu():
+
+    borne_minimal = int(input("Choisissez la borne minimal du nombre que vous voulez deviner"))
+    borne_maximal = int(input("Choisissez la borne maximal du nombre que vous voulez deviner"))
+
+    nbr_essaies = 0
+    #ordinateur chosi un nombre aléatoire entre 0 et 100
+    guess = int(input("Trouvez le nombre"))
+    valeur = random.randint(borne_minimal, borne_maximal)
+
+
+    while guess != valeur:
+        nbr_essaies += 1
+        if guess < valeur:
+            print ("Le nombre que vous avez choisi est trop petit.")
+            guess = int(input("Devinez encore!"))
+
+        elif guess > valeur:
+            print ("Le nombre que vous avez choisi est trop élevé. ")
+            guess = int(input('Devinez encore!'))
+
+    while guess == valeur:
+        print("vous avez reussi en", nbr_essaies, " essaies, ")
+        guess_2 = input("Voulez vous essayer encore. y ou n")
+
+        if guess_2 == "n":
+            exit()
+        if guess_2 == "y":
+            jeu()
+
+jeu()
